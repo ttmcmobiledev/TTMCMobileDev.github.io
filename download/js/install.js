@@ -18,7 +18,7 @@ window.onload = function () {
     //区分站点
     var location = window.location.toString();
     var isOKEx = location.indexOf('/okex/') !== -1;
-    var isOKCoin = location.indexOf('/okcoin/') !== -1;
+    var isOKCoin = location.indexOf('/ttmc/') !== -1;
 
     //Android 自动触发下载事件
     if (window.location.toString().indexOf('android') !== -1) {
@@ -101,7 +101,7 @@ function downloadAction() {
         oknodesBetaDownload(isiOS, channelID);
     } else if (location.indexOf("coinall") !== -1) {
         coinallBetaDownload(isiOS, channelID);
-    } else if (location.indexOf("okcoin") !== -1) {
+    } else if (location.indexOf("ttmc") !== -1) {
         var isForeign = getQueryResult("isForeign");
         //国外 iOS 用户跳转到 AppStore
         if (isForeign == true && isiOS) {
@@ -201,27 +201,27 @@ function coinallBetaDownload(isiOS, channelID) {
 }
 
 /**
- * OKCoin 内测版下载
+ * TTMCWallet 内测版下载
  */
 function okcoinBetaDownload(isiOS, channelID) {
     if (isiOS) {
-        window.location.href = "itms-services://?action=download-manifest&url=https://upgradeapp.oss-cn-hangzhou.aliyuncs.com/upgradeapp/install-okcoin-manifest.plist";
+        window.location.href = "itms-services://?action=download-manifest&url=https://github.com/vankiaio/TTMCWallet-IOS-Deploy/raw/master/manifest.plist";
         _czc.push(["_trackEvent", "下载", "okcoin_ios_install_click", channelID]);
     } else {
-        window.location.href = "http://upgradeapp.oss-cn-hangzhou.aliyuncs.com/upgradeapp/OKCoin-android.apk";
+        window.location.href = "http://ttmc_api.vankia.net:3030/upgrade/umeng/TTMCWallet0.9.6.06041936umeng.apk";
         _czc.push(["_trackEvent", "下载", "okcoin_android_install_click", channelID]);
     }
 }
 
 /**
- * OKCoin 商店版下载
+ * TTMCWallet 商店版下载
  */
 function okcoinStoreDownload(isiOS, channelID) {
     if (isiOS) {
-        window.location.href = "https://itunes.apple.com/us/app/okcoin-bitcoin-trading-exch/id867444712?mt=8";
+        window.location.href = "https://itunes.apple.com/us/app/ttmc-bitcoin-trading-exch/id867444712?mt=8";
         _czc.push(["_trackEvent", "下载", "okcoin_store_ios_install_click", channelID]);
     } else {
-        window.location.href = "https://play.google.com/store/apps/details?id=com.okinc.okcoin.intl";
+        window.location.href = "https://play.google.com/store/apps/details?id=com.okinc.ttmc.intl";
         _czc.push(["_trackEvent", "下载", "okcoin_store_android_install_click", channelID]);
     }
 }
